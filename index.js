@@ -31,30 +31,47 @@ Presence.prototype.init = function (config) {
     var self = this;
     var langFile = self.controller.loadModuleLang("Presence");
 
-    // Create vdev
+    // Create presence dev
     this.presenceDev = this.controller.devices.create({
         deviceId: "Presence_" + this.id,
         defaults: {
             metrics: {
-                title: langFile.title,
-                level: 'off',
-                season: self.calculatePresence()
+                title: langFile.title_presence,
+                level: 'on'
             }
         },
         overlay: {
-            deviceType: 'toggleButton'
+            deviceType: 'binarySwitch'
         },
         handler: function(command) {
-            if (command === 'on') {
-                self.vDev.set('metrics:level','on');
-                self.switchPresence();
+            if (command === 'on'
+                || command === 'off') {
+                self.switchPresence(command);
             }
         },
         moduleId: this.id
     });
     
-    
-
+    // Create holiday dev
+    this.presenceDev = this.controller.devices.create({
+        deviceId: "Holiday_" + this.id,
+        defaults: {
+            metrics: {
+                title: langFile.title_holiday,
+                level: 'off'
+            }
+        },
+        overlay: {
+            deviceType: 'binarySwitch'
+        },
+        handler: function(command) {
+            if (command === 'on'
+                || command === 'off') {
+                self.switchHoliday(command);
+            }
+        },
+        moduleId: this.id
+    });
 };
 
 
