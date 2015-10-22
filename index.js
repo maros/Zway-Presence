@@ -15,6 +15,7 @@ function Presence (id, controller) {
     
     self.presenceDev    = undefined;
     self.vacationDev    = undefined;
+    self.daynightDev    = undefined;
 }
 
 inherits(Presence, AutomationModule);
@@ -33,7 +34,7 @@ Presence.prototype.init = function (config) {
 
     // Create presence dev
     this.presenceDev = this.controller.devices.create({
-        deviceId: "Presence_" + this.id,
+        deviceId: "Presence_Main_" + this.id,
         defaults: {
             metrics: {
                 title: langFile.title_presence,
@@ -52,9 +53,9 @@ Presence.prototype.init = function (config) {
         moduleId: this.id
     });
     
-    // Create holiday dev
-    this.presenceDev = this.controller.devices.create({
-        deviceId: "Holiday_" + this.id,
+    // Create vacation dev
+    this.vacationDev = this.controller.devices.create({
+        deviceId: "Presence_Vacation_" + this.id,
         defaults: {
             metrics: {
                 title: langFile.title_holiday,
@@ -72,21 +73,35 @@ Presence.prototype.init = function (config) {
         },
         moduleId: this.id
     });
+
+    this.daynightDev = this.controller.devices.create({
+        deviceId: "Presence_DayNight_" + this.id,
+        defaults: {},
+        overlay: {
+            deviceType: 'toggleSwitch'
+        },
+        handler: function(command) {
+            if (command === 'on'
+                || command === 'off') {
+                self.switchDaynight(command);
+            }
+        },
+        moduleId: this.id
+
+    });
 };
 
 
 Presence.prototype.stop = function () {
     var self = this;
     
-    if (self.presenceDev) {
-        self.controller.devices.remove(self.presenceDev.id);
-        self.presenceDev = undefined;
-    }
-    
-    if (self.vacationDev) {
-        self.controller.devices.remove(self.vacationDev.id);
-        self.vacationDev = undefined;
-    }
+    _.each(['presence','vacation','daynight'],function(element) {
+        var key = element + 'Dev';
+        if (typeof(self[element]) {
+            self.controller.devices.remove(self[elememt]);
+            self[element] = undefined;
+        }
+    });
     
     Presence.super_.prototype.stop.call(this);
 };
@@ -94,4 +109,8 @@ Presence.prototype.stop = function () {
 // ----------------------------------------------------------------------------
 // --- Module methods
 // ----------------------------------------------------------------------------
+
+Presence.prototype.switchPresence = function(newPresence) {};
+Presence.prototype.switchVacation = function(newVacation) {};
+Presence.prototype.switchDayNight = function(newDayNight) {};
 
