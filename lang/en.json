@@ -1,0 +1,8 @@
+{
+    "title" : "Presence state",
+    "description" : "This module lets you manage presence states. It distinguishes between present/away, on vacation/home, and day/night",
+    "title_presence": "Presence",
+    "title_vacation": "Vacation",
+    "title_night": "Night"
+    
+}
