@@ -103,8 +103,10 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
         deviceId: "Presence_"+type+"_" + this.id,
         defaults: {
             metrics: {
+                probeTitle: type,
                 title: self.langFile['title_'+type],
-                level: defaultLevel
+                level: defaultLevel,
+                mode: 'present'
             }
         },
         overlay: {
@@ -142,9 +144,9 @@ Presence.prototype.switchMode = function(type,newLevel) {
     var self = this;
     
     var device      = self[type+'Dev'];
-    var oldLevel    = device.set('metrics:level');
-    
-    if (oldMode === newLevel) {
+    var oldLevel    = device.get('metrics:level');
+    if (typeof(oldMode) !== 'undefined' 
+        && oldMode === newLevel) {
         return;
     }
     
@@ -192,13 +194,14 @@ Presence.prototype.calcMode = function(type) {
     var presence    = self.presenceDev.get('metrics:level');
     var night       = self.nightDev.get('metrics:level');
     var vacation    = self.vacationDev.get('metrics:level');
+    var oldMode     = self.presenceDev.get('metrics:mode');
     var mode;
     
     if (presence === 'on') {
         if (night === 'on'){
             mode = 'night';
         } else {
-            mode = 'present';
+            mode = 'home';
         }
         // TODO check vacation?
     } else if (presence === 'off') {
@@ -209,5 +212,19 @@ Presence.prototype.calcMode = function(type) {
         }
     }
     
+    if (mode !== oldMode) {
+        _.each(self.devices,function(element) {
+            var key     = element + 'Dev';
+            var device  = self[element];
+            if (typeof(device) !== 'undefined') {
+                device.set('metrics:mode',mode);
+            }
+        });
+        
+        self.controller.emit("presence."+mode);
+    }
+    
     self.initNightTimeout();
+    
+    return mode;
 };
