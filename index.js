@@ -24,13 +24,6 @@ inherits(Presence, AutomationModule);
 
 _module = Presence;
 
-/*
- * Present
- * Night
- * Away
- * Vacation
- */
-
 // ----------------------------------------------------------------------------
 // --- Module instance initialized
 // ----------------------------------------------------------------------------
@@ -151,8 +144,8 @@ Presence.prototype.switchMode = function(type,newLevel) {
     }
     
     console.log('[Presence] Turning '+newLevel+' '+type);
-    device.set('metrics:level',command);
-    device.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+command+'.png');
+    device.set('metrics:level',newLevel);
+    device.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+newLevel+'.png');
     
     self.calcMode(type);
 };

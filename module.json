@@ -4,7 +4,7 @@
     "category": "scheduling",
     "author": "Maroš Kollár",
     "homepage": "http://k-1.com",
-    "icon": "icon.png",
+    "icon": "presence_on.png",
     "version": "1.00",
     "maturity": "stable",
     "moduleName": "Presence",
