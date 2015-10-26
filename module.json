@@ -1,49 +1,49 @@
 {
-    "dependencies": [],
-    "singleton": true,
-    "category": "scheduling",
-    "author": "Maroš Kollár",
-    "homepage": "http://k-1.com",
-    "icon": "presence_on.png",
-    "version": "1.00",
-    "maturity": "stable",
-    "moduleName": "Presence",
-    "repository": {
-        "type": "git",
-        "source": "https://github.com/maros/Zway-Presence"
-    },
-    "defaults": {
-        "title": "__title__",
-        "description": "__description__"
-    },
-    "schema": {
-        "type": "object",
-        "properties": {
-            "night_start": {
-                "type": "string",
-                "pattern": "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
-                "required": true
-            },
-            "night_end": {
-                "type": "string",
-                "pattern": "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
-                "required": true
-            }
-        },
-        "required": true
-    },
-    "options": {
-        "fields": {
-            "night_start": {
-                "label": "__night_start_label__",
-                "type": "time",
-                "maskString": "99:99"
-            },
-            "night_end": {
-                "label": "__night_end_label__",
-                "type": "time",
-                "maskString": "99:99"
-            }
-        }
-    }
+   "author" : "Maroš Kollár",
+   "category" : "scheduling",
+   "defaults" : {
+      "description" : "__description__",
+      "title" : "__title__"
+   },
+   "dependencies" : [],
+   "homepage" : "http://k-1.com",
+   "icon" : "presence_on.png",
+   "maturity" : "stable",
+   "moduleName" : "Presence",
+   "options" : {
+      "fields" : {
+         "night_end" : {
+            "label" : "__night_end_label__",
+            "maskString" : "99:99",
+            "type" : "time"
+         },
+         "night_start" : {
+            "label" : "__night_start_label__",
+            "maskString" : "99:99",
+            "type" : "time"
+         }
+      }
+   },
+   "repository" : {
+      "source" : "https://github.com/maros/Zway-Presence",
+      "type" : "git"
+   },
+   "schema" : {
+      "properties" : {
+         "night_end" : {
+            "pattern" : "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
+            "required" : true,
+            "type" : "string"
+         },
+         "night_start" : {
+            "pattern" : "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
+            "required" : true,
+            "type" : "string"
+         }
+      },
+      "required" : true,
+      "type" : "object"
+   },
+   "singleton" : true,
+   "version" : "1.01"
 }
