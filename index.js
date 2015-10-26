@@ -172,13 +172,13 @@ Presence.prototype.initNightTimeout = function() {
     var night = self.nightDev.get('metrics:level');
     
     if (night === 'on') {
-        var timeout = self.calcTimeout(self.config.night_end):
+        var timeout = self.calcTimeout(self.config.night_end);
         self.nightTimeout = setTimeout(
             _.bind(self.switchMode,self,'night','off'),
             timeout
         );
     } else if (night === 'off') {
-        var timeout = self.calcTimeout(self.config.night_start):
+        var timeout = self.calcTimeout(self.config.night_start);
         self.nightTimeout = setTimeout(
             _.bind(self.switchMode,self,'night','on'),
             timeout
@@ -195,14 +195,14 @@ Presence.prototype.calcMode = function(type) {
     var mode;
     
     if (presence === 'on') {
-        if (night === 'on' {
+        if (night === 'on'){
             mode = 'night';
         } else {
             mode = 'present';
         }
         // TODO check vacation?
     } else if (presence === 'off') {
-        if (vacation === 'on' {
+        if (vacation === 'on') {
             mode = 'vacation';
         } else {
             mode = 'away';
