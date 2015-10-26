@@ -1,18 +1,40 @@
 # Zway-Presence
 
-TODO
+This module manages presence modes. It can be used by other automation modules
+(ie. thermostat control) to control smart home automation behaviour.
+
+Four different presence modes are available
+
+* home
+* away
+* vacation
+* night
 
 # Configuration
 
-TODO
+## night_start, night_end
+
+Lets you specify a time by which night mode should be activated/deactivated.
+Manual switching regardless of the configured time is still possible.
 
 # Events
 
-TODO
+Whenever presence mode change an event will be triggered
+
+* presence.home
+* presence.away
+* presence.vacation
+* presence.night
 
 # Virtual Devices
 
-TODO
+This module creates three virtual device switches to manage modes:
+
+* Presence: Home or away
+* Vacation: Longer absence
+* Day/night
+
+Additionally presence mode is stored in each device under metrics:mode.
 
 # Installation
 
