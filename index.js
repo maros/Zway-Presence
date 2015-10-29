@@ -74,19 +74,20 @@ Presence.prototype.calcTimeout = function(timeString) {
     if (!match) {
         return;
     }
-    
+    var hour        = parseInt(match[1]);
+    var minute      = parseInt(match[2]);
     var dateNow     = new Date();
     var dateCalc    = new Date();
-    dateCalc.setHours(parseInt(match[0]), parseInt(match[1]));
+    dateCalc.setHours(hour, minute);
     
     if (dateCalc < dateNow) {
         dateCalc.setHours(dateCalc.getHours() + 24);
         // Now fix time jump on DST
-        dateCalc.setHours(match[0],match[1]);
+        dateCalc.setHours(hour,minute);
     }
     
     return (dateCalc.getTime() - dateNow.getTime());
-}
+};
 
 Presence.prototype.createDevice = function(type,defaultLevel) {
     var self = this;
