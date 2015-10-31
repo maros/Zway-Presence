@@ -5,5 +5,6 @@
    "title" : "Presence state",
    "title_night" : "Night",
    "title_presence" : "Presence",
-   "title_vacation" : "Vacation"
+   "title_vacation" : "Vacation",
+   "time_placeholder": "HH:MM"
 }

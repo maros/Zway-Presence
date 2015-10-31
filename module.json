@@ -15,12 +15,14 @@
          "night_end" : {
             "label" : "__night_end_label__",
             "maskString" : "99:99",
+            "placeholder" : "__time_placeholder__",
             "type" : "time",
             "order": 2
          },
          "night_start" : {
             "label" : "__night_start_label__",
             "maskString" : "99:99",
+            "placeholder" : "__time_placeholder__",
             "type" : "time",
             "order": 1
          }
