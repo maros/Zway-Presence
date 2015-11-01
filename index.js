@@ -1,6 +1,6 @@
 /*** Presence Z-Way HA module *******************************************
 
-Version: 1.01
+Version: 1.02
 (c) Maroš Kollár, 2015
 -----------------------------------------------------------------------------
 Author: Maroš Kollár <maros@k-1.com>
@@ -29,6 +29,7 @@ _module = Presence;
 // ----------------------------------------------------------------------------
 
 Presence.prototype.devices = ['presence','vacation','night'];
+Presence.prototype.states = ['home','night','away','vacation'];
 
 Presence.prototype.init = function (config) {
     Presence.super_.prototype.init.call(this, config);
