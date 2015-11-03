@@ -28,7 +28,7 @@ _module = Presence;
 // --- Module instance initialized
 // ----------------------------------------------------------------------------
 
-Presence.prototype.devices = ['presence','vacation','night'];
+Presence.prototype.subDevices = ['presence','vacation','night'];
 Presence.prototype.states = ['home','night','away','vacation'];
 
 Presence.prototype.init = function (config) {
@@ -37,21 +37,21 @@ Presence.prototype.init = function (config) {
     var self = this;
     self.langFile = self.controller.loadModuleLang("Presence");
 
-    this.createDevice('presence','on');
-    this.createDevice('vacation','off');
-    this.createDevice('night','off');
+    self.presenceDev = self.createDevice('presence','on');
+    self.vacationDev = self.createDevice('vacation','off');
+    self.nightDev = self.createDevice('night','off');
     
-    this.initNightTimeout();
+    self.initNightTimeout();
 };
 
 Presence.prototype.stop = function () {
     var self = this;
     
-    _.each(self.devices,function(element) {
+    _.each(self.subDevices,function(element) {
         var key = element + 'Dev';
-        if (typeof(self[element]) !== 'undefined') {
-            self.controller.devices.remove(self[elememt]);
-            self[element] = undefined;
+        if (typeof(self[key]) !== 'undefined') {
+            self.controller.devices.remove(self[key]);
+            self[key] = undefined;
         }
     });
     
@@ -101,7 +101,7 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
                 probeTitle: type,
                 title: self.langFile['title_'+type],
                 level: defaultLevel,
-                mode: 'present'
+                mode: 'home'
             }
         },
         overlay: {
@@ -115,7 +115,6 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
         },
         moduleId: self.id
     });
-    self[type+'Dev'] = device;
     
     var level = device.get('metrics:level');
     device.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+level+'.png');
@@ -190,36 +189,31 @@ Presence.prototype.calcMode = function(type) {
     var night       = self.nightDev.get('metrics:level');
     var vacation    = self.vacationDev.get('metrics:level');
     var oldMode     = self.presenceDev.get('metrics:mode');
-    var mode;
+    var newMode;
     
     if (presence === 'on') {
         if (night === 'on'){
-            mode = 'night';
+            newMode = 'night';
         } else {
-            mode = 'home';
+            newMode = 'home';
         }
         // TODO check vacation?
     } else if (presence === 'off') {
         if (vacation === 'on') {
-            mode = 'vacation';
+            newMode = 'vacation';
         } else {
-            mode = 'away';
+            newMode = 'away';
         }
     }
     
-    if (mode !== oldMode) {
-        _.each(self.devices,function(element) {
-            var key     = element + 'Dev';
-            var device  = self[element];
-            if (typeof(device) !== 'undefined') {
-                device.set('metrics:mode',mode);
-            }
-        });
-        
-        self.controller.emit("presence."+mode);
+    if (newMode !== oldMode) {
+        self.presenceDev.set('metrics:mode',newMode);
+        self.vacationDev.set('metrics:mode',newMode);
+        self.nightDev.set('metrics:mode',newMode);
+        self.controller.emit("presence."+newMode);
     }
     
     self.initNightTimeout();
     
-    return mode;
+    return newMode;
 };
