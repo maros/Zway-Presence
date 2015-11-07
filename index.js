@@ -94,7 +94,7 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
     var self = this;
     
     var handler = type.charAt(0).toUpperCase() + type.slice(1);
-    var device  = self.controller.devices.create({
+    var deviceObject  = self.controller.devices.create({
         deviceId: "Presence_"+type+"_" + this.id,
         defaults: {
             metrics: {
@@ -116,10 +116,10 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
         moduleId: self.id
     });
     
-    var level = device.get('metrics:level');
-    device.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+level+'.png');
+    var level = deviceObject.get('metrics:level');
+    deviceObject.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+level+'.png');
     
-    return device;
+    return deviceObject;
 };
 
 Presence.prototype.switchPresence = function(command) {
@@ -137,16 +137,16 @@ Presence.prototype.switchNight = function(command) {
 Presence.prototype.switchMode = function(type,newLevel) {
     var self = this;
     
-    var device      = self[type+'Dev'];
-    var oldLevel    = device.get('metrics:level');
+    var deviceObject    = self[type+'Dev'];
+    var oldLevel        = deviceObject.get('metrics:level');
     if (typeof(oldMode) !== 'undefined' 
         && oldMode === newLevel) {
         return;
     }
     
     console.log('[Presence] Turning '+newLevel+' '+type);
-    device.set('metrics:level',newLevel);
-    device.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+newLevel+'.png');
+    deviceObject.set('metrics:level',newLevel);
+    deviceObject.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+newLevel+'.png');
     
     self.calcMode(type);
 };
