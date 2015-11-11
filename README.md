@@ -18,7 +18,8 @@ automatically.
 ## night_start, night_end
 
 Lets you specify a time by which night mode should be activated/deactivated.
-Manual switching regardless of the configured time is still possible.
+automatically. Manual switching regardless of the configured time is still 
+possible.
 
 # Events
 
@@ -37,7 +38,8 @@ This module creates three virtual device switches to manage modes:
 * Vacation: Longer absence
 * Day/night
 
-Additionally presence mode is stored in each device under metrics:mode.
+Additionally the calculated presence mode is stored in each device under 
+metrics:mode.
 
 # Installation
 
