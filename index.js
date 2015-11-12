@@ -105,6 +105,9 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
             }
         },
         overlay: {
+            metrics: {
+                probeTitle: probeTitle
+            },
             deviceType: 'switchBinary'
         },
         handler: function(command,args) {
