@@ -29,6 +29,9 @@ Whenever presence mode change an event will be triggered
 * presence.away
 * presence.vacation
 * presence.night
+* presence.comehome (when switching from away or vacation to home or night)
+* presence.leave (when switching from home or night to away or vacation)
+
 
 # Virtual Devices
 

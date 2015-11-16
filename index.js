@@ -214,6 +214,12 @@ Presence.prototype.calcMode = function(type) {
         self.vacationDev.set('metrics:mode',newMode);
         self.nightDev.set('metrics:mode',newMode);
         self.controller.emit("presence."+newMode);
+        
+        var oldPresence = (oldMode === 'home' || oldMode === 'night') ? true:false;
+        var newPresence = (newMode === 'home' || newMode === 'night') ? true:false;
+        if (oldPresence !== newPresence) {
+            self.controller.emit("presence."+(newPresence ? 'comehome':'leave'));
+        }
     }
     
     self.initNightTimeout();
