@@ -1,6 +1,6 @@
 {
    "author" : "Maroš Kollár",
-   "category" : "scheduling",
+   "category" : "automation_basic",
    "defaults" : {
       "description" : "__description__",
       "title" : "__title__"
