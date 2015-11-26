@@ -93,21 +93,18 @@ Presence.prototype.calcTimeout = function(timeString) {
 Presence.prototype.createDevice = function(type,defaultLevel) {
     var self = this;
     
-    var probeTitle = type.charAt(0).toUpperCase() + type.slice(1);
+    var probeType = type.charAt(0).toUpperCase() + type.slice(1);
     var deviceObject  = self.controller.devices.create({
         deviceId: "Presence_"+type+"_" + this.id,
         defaults: {
             metrics: {
-                probeTitle: probeTitle,
                 title: self.langFile['title_'+type],
                 level: defaultLevel,
                 mode: 'home'
             }
         },
         overlay: {
-            metrics: {
-                probeTitle: probeTitle
-            },
+            probeType: probeType,
             deviceType: 'switchBinary'
         },
         handler: function(command,args) {
