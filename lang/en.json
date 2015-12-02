@@ -2,9 +2,9 @@
    "description" : "This module lets you manage presence states. It distinguishes between present/away, on vacation/home, and day/night",
    "night_end_label" : "Night end",
    "night_start_label" : "Night start",
+   "time_format" : "hh:mm",
    "title" : "Presence state",
    "title_night" : "Night",
    "title_presence" : "Presence",
-   "title_vacation" : "Vacation",
-   "time_placeholder": "HH:MM"
+   "title_vacation" : "Vacation"
 }

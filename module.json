@@ -12,18 +12,18 @@
    "moduleName" : "Presence",
    "options" : {
       "fields" : {
-         "night_end" : {
+         "nightEnd" : {
             "label" : "__night_end_label__",
             "maskString" : "99:99",
+            "placeholder": "__time_format__",
             "order" : 2,
-            "placeholder" : "__time_placeholder__",
             "type" : "time"
          },
-         "night_start" : {
+         "nightStart" : {
             "label" : "__night_start_label__",
             "maskString" : "99:99",
             "order" : 1,
-            "placeholder" : "__time_placeholder__",
+            "placeholder": "__time_format__",
             "type" : "time"
          }
       }
@@ -34,12 +34,12 @@
    },
    "schema" : {
       "properties" : {
-         "night_end" : {
+         "nightEnd" : {
             "pattern" : "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
             "required" : true,
             "type" : "string"
          },
-         "night_start" : {
+         "nightStart" : {
             "pattern" : "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
             "required" : true,
             "type" : "string"
