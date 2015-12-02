@@ -75,8 +75,8 @@ Presence.prototype.calcTimeout = function(timeString) {
     if (!match) {
         return;
     }
-    var hour        = parseInt(match[1]);
-    var minute      = parseInt(match[2]);
+    var hour        = parseInt(match[1],10);
+    var minute      = parseInt(match[2],10);
     var dateNow     = new Date();
     var dateCalc    = new Date();
     dateCalc.setHours(hour, minute);
@@ -166,15 +166,16 @@ Presence.prototype.initNightTimeout = function() {
     self.clearNightTimeout();
     
     var night = self.nightDev.get('metrics:level');
+    var timeout;
     
     if (night === 'on') {
-        var timeout = self.calcTimeout(self.config.night_end);
+        timeout = self.calcTimeout(self.config.nightEnd);
         self.nightTimeout = setTimeout(
             _.bind(self.switchMode,self,'night','off'),
             timeout
         );
     } else if (night === 'off') {
-        var timeout = self.calcTimeout(self.config.night_start);
+        timeout = self.calcTimeout(self.config.nightStart);
         self.nightTimeout = setTimeout(
             _.bind(self.switchMode,self,'night','on'),
             timeout
