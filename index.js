@@ -123,15 +123,15 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
 };
 
 Presence.prototype.switchPresence = function(command) {
-    this.switchMode(self.presenceDev,command);
+    this.switchMode('presence',command);
 };
 
 Presence.prototype.switchVacation = function(command) {
-    this.switchMode(self.vacationDev,command);
+    this.switchMode('vacation',command);
 };
 
 Presence.prototype.switchNight = function(command) {
-    this.switchMode(self.nightDev,command);
+    this.switchMode('night',command);
 };
 
 Presence.prototype.switchMode = function(type,newLevel) {
