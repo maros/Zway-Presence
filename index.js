@@ -149,6 +149,7 @@ Presence.prototype.switchMode = function(type,newLevel) {
     deviceObject.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+newLevel+'.png');
     
     self.calcMode(type);
+    self.controller.emit("presence.switch"+type,newLevel);
 };
 
 Presence.prototype.clearNightTimeout = function() {
@@ -211,7 +212,7 @@ Presence.prototype.calcMode = function(type) {
         self.presenceDev.set('metrics:mode',newMode);
         self.vacationDev.set('metrics:mode',newMode);
         self.nightDev.set('metrics:mode',newMode);
-        self.controller.emit("presence."+newMode);
+        self.controller.emit("presence."+newMode,newMode);
         
         var oldPresence = (oldMode === 'home' || oldMode === 'night') ? true:false;
         var newPresence = (newMode === 'home' || newMode === 'night') ? true:false;
