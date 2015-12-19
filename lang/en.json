@@ -1,5 +1,5 @@
 {
-   "description" : "This module lets you manage presence states. It distinguishes between present/away, on vacation/home, and day/night",
+   "description" : "This module lets you manage presence states. The mode is determined based on the state of three switches: present/away, on vacation/home, and day/night",
    "night_end_label" : "Night end",
    "night_start_label" : "Night start",
    "time_format" : "hh:mm",
