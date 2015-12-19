@@ -7,7 +7,7 @@
    },
    "dependencies" : [],
    "homepage" : "http://k-1.com",
-   "icon" : "presence_on.png",
+   "icon" : "icon.png",
    "maturity" : "stable",
    "moduleName" : "Presence",
    "options" : {
@@ -15,15 +15,15 @@
          "nightEnd" : {
             "label" : "__night_end_label__",
             "maskString" : "99:99",
-            "placeholder": "__time_format__",
             "order" : 2,
+            "placeholder" : "__time_format__",
             "type" : "time"
          },
          "nightStart" : {
             "label" : "__night_start_label__",
             "maskString" : "99:99",
             "order" : 1,
-            "placeholder": "__time_format__",
+            "placeholder" : "__time_format__",
             "type" : "time"
          }
       }
@@ -49,5 +49,5 @@
       "type" : "object"
    },
    "singleton" : true,
-   "version" : "1.04"
+   "version" : 1.05
 }

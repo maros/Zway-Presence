@@ -1,3 +1,12 @@
+1.05 2015 Dec 19, Sat
+    * Emit switch events
+    * Fix presence switches
+    * Unify variable names
+    * cleanup jshint issues
+    * Set probeType instead of metrics:probeTitle
+    * Update category
+    * dd comehome and leave events
+
 1.04 2015 Nov 15, Sun
     * Clarify presence modes in documentation
     * Cleanups
