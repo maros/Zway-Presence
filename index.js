@@ -35,7 +35,6 @@ Presence.prototype.init = function (config) {
     Presence.super_.prototype.init.call(this, config);
 
     var self = this;
-    self.langFile = self.controller.loadModuleLang("Presence");
 
     self.presenceDev = self.createDevice('presence','on');
     self.vacationDev = self.createDevice('vacation','off');
@@ -111,6 +110,7 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
             if (command !== 'on' && command !== 'off') {
                 return;
             }
+            self.log('Switch '+type+' via vDev');
             self.switchMode(type,command);
         },
         moduleId: self.id
@@ -123,14 +123,17 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
 };
 
 Presence.prototype.switchPresence = function(command) {
+    self.log('Switch presence via method');
     this.switchMode('presence',command);
 };
 
 Presence.prototype.switchVacation = function(command) {
+    self.log('Switch vacation via method');
     this.switchMode('vacation',command);
 };
 
 Presence.prototype.switchNight = function(command) {
+    self.log('Switch night via method');
     this.switchMode('night',command);
 };
 
@@ -144,7 +147,7 @@ Presence.prototype.switchMode = function(type,newLevel) {
         return;
     }
     
-    console.log('[Presence] Turning '+newLevel+' '+type);
+    self.log('Switching '+newLevel+' '+type);
     deviceObject.set('metrics:level',newLevel);
     deviceObject.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+newLevel+'.png');
     
@@ -209,6 +212,7 @@ Presence.prototype.calcMode = function(type) {
     }
     
     if (newMode !== oldMode) {
+        self.log('Setting new mode to '+newMode+' (was +'oldMode+')');
         self.presenceDev.set('metrics:mode',newMode);
         self.vacationDev.set('metrics:mode',newMode);
         self.nightDev.set('metrics:mode',newMode);
