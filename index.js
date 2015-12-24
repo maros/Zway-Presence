@@ -204,7 +204,7 @@ Presence.prototype.calcMode = function(type) {
     }
     
     if (newMode !== oldMode) {
-        self.log('Setting new mode to '+newMode+' (was +'oldMode+')');
+        self.log('Setting new mode to '+newMode+' (was '+oldMode+')');
         self.presenceDev.set('metrics:mode',newMode);
         self.vacationDev.set('metrics:mode',newMode);
         self.nightDev.set('metrics:mode',newMode);
