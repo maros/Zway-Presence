@@ -20,7 +20,7 @@ function Presence (id, controller) {
     this.nightTimeout       = undefined;
 }
 
-inherits(Presence, AutomationModule);
+inherits(Presence, BaseModule);
 
 _module = Presence;
 
@@ -29,7 +29,6 @@ _module = Presence;
 // ----------------------------------------------------------------------------
 
 Presence.prototype.subDevices = ['presence','vacation','night'];
-Presence.prototype.states = ['home','night','away','vacation'];
 
 Presence.prototype.init = function (config) {
     Presence.super_.prototype.init.call(this, config);
@@ -66,19 +65,12 @@ Presence.prototype.stop = function () {
 Presence.prototype.calcTimeout = function(timeString) {
     var self = this;
     
-    if (typeof(timeString) !== 'string') {
-        return;
-    }
-    
-    var match = timeString.match(/^(\d{1,2}):(\d{1,2})$/);
-    if (!match) {
-        return;
-    }
-    var hour        = parseInt(match[1],10);
-    var minute      = parseInt(match[2],10);
     var dateNow     = new Date();
-    var dateCalc    = new Date();
-    dateCalc.setHours(hour, minute);
+    var dateCalc    = self.parseTime(timeString);
+    
+    if (typeof(dateCalc) === 'undefined') {
+        return;
+    }
     
     if (dateCalc < dateNow) {
         dateCalc.setHours(dateCalc.getHours() + 24);
