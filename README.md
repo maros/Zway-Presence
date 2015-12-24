@@ -46,6 +46,8 @@ metrics:mode.
 
 # Installation
 
+Install the BaseModule from https://github.com/maros/Zway-BaseModule first
+
 ```shell
 cd /opt/z-way-server/automation/modules
 git clone https://github.com/maros/Zway-Presence.git Presence --branch latest
