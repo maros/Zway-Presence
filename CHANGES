@@ -1,3 +1,8 @@
+1.06 2015 Dec 27, Sun
+    * Documentation
+    * Use BaseModule
+    * Add log messages
+
 1.05 2015 Dec 19, Sat
     * Emit switch events
     * Fix presence switches

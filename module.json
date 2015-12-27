@@ -5,7 +5,9 @@
       "description" : "__description__",
       "title" : "__title__"
    },
-   "dependencies" : ["BaseModule"],
+   "dependencies" : [
+      "BaseModule"
+   ],
    "homepage" : "http://k-1.com",
    "icon" : "icon.png",
    "maturity" : "stable",
@@ -49,5 +51,5 @@
       "type" : "object"
    },
    "singleton" : true,
-   "version" : 1.05
+   "version" : 1.06
 }
