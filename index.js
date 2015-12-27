@@ -73,7 +73,9 @@ Presence.prototype.calcTimeout = function(timeString) {
     }
     
     if (dateCalc < dateNow) {
-        dateCalc.setHours(dateCalc.getHours() + 24);
+        var hour    = dateCalc.getHours();
+        var minute  = dateCalc.getMinutes();
+        dateCalc.setHours(hour + 24);
         // Now fix time jump on DST
         dateCalc.setHours(hour,minute);
     }
