@@ -8,7 +8,7 @@
    "dependencies" : [
       "BaseModule"
    ],
-   "homepage" : "http://k-1.com",
+   "homepage" : "https://github.com/maros/Zway-Presence/",
    "icon" : "icon.png",
    "maturity" : "stable",
    "moduleName" : "Presence",
