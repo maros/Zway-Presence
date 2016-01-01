@@ -35,11 +35,28 @@ Presence.prototype.init = function (config) {
 
     var self = this;
 
-    self.presenceDev = self.createDevice('presence','on');
-    self.vacationDev = self.createDevice('vacation','off');
-    self.nightDev = self.createDevice('night','off');
+    self.presenceDev    = self.createDevice('presence','on');
+    self.vacationDev    = self.createDevice('vacation','off');
+    self.nightDev       = self.createDevice('night','off');
     
-    self.initNightTimeout();
+    _.each(['nightStart','nightEnd'],function(timeString) {
+        var date        = self.parseTime(self.config[timeString]);
+        self.controller.emit("cron.addTask","Presence."+timeString, {
+            minute:     date.getMinutes(),
+            hour:       date.getHours(),
+            weekDay:    null,
+            day:        null,
+            month:      null
+        });
+    });
+    
+    controller.on('Presence.nightStart',function() {
+        self.switchMode('night','on');
+    });
+    
+    controller.on('Presence.nightEnd',function() {
+        self.switchMode('night','off');
+    });
 };
 
 Presence.prototype.stop = function () {
@@ -52,8 +69,6 @@ Presence.prototype.stop = function () {
             self[key] = undefined;
         }
     });
-    
-    self.clearNightTimeout();
     
     Presence.super_.prototype.stop.call(this);
 };
@@ -149,38 +164,6 @@ Presence.prototype.switchMode = function(type,newLevel) {
     self.controller.emit("presence.switch"+type,newLevel);
 };
 
-Presence.prototype.clearNightTimeout = function() {
-    var self = this;
-    
-    if (typeof(self.nightTimeout) !== 'undefined') {
-        clearTimeout(self.nightTimeout);
-        self.nightTimeout = undefined;
-    }
-};
-
-Presence.prototype.initNightTimeout = function() {
-    var self = this;
-    
-    self.clearNightTimeout();
-    
-    var night = self.nightDev.get('metrics:level');
-    var timeout;
-    
-    if (night === 'on') {
-        timeout = self.calcTimeout(self.config.nightEnd);
-        self.nightTimeout = setTimeout(
-            _.bind(self.switchMode,self,'night','off'),
-            timeout
-        );
-    } else if (night === 'off') {
-        timeout = self.calcTimeout(self.config.nightStart);
-        self.nightTimeout = setTimeout(
-            _.bind(self.switchMode,self,'night','on'),
-            timeout
-        );
-    }
-};
-
 Presence.prototype.calcMode = function(type) {
     var self = this;
     
@@ -218,8 +201,6 @@ Presence.prototype.calcMode = function(type) {
             self.controller.emit("presence."+(newPresence ? 'comehome':'leave'));
         }
     }
-    
-    self.initNightTimeout();
     
     return newMode;
 };
