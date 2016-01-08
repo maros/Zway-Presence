@@ -1,9 +1,9 @@
 {
-   "description" : "Dieses Modul verwaltet Anwesenheits Zusände. Der Modus ergibt sich aus der Komination von drei Schaltern: anwesend/weg, Urlaub/daheim, und Tag/Nacht.",
+   "m_descr" : "Dieses Modul verwaltet Anwesenheits Zusände. Der Modus ergibt sich aus der Komination von drei Schaltern: anwesend/weg, Urlaub/daheim, und Tag/Nacht.",
    "night_end_label" : "Nacht Ende",
    "night_start_label" : "Nacht Anfang",
    "time_format" : "hh:mm",
-   "title" : "Anwesenheit",
+   "m_title" : "Anwesenheit",
    "title_night" : "Nacht Anwesend",
    "title_presence" : "Anwesend",
    "title_vacation" : "Urlaub"
