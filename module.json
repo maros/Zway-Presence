@@ -6,6 +6,7 @@
       "title" : "__m_title__"
    },
    "dependencies" : [
+      "Cron",
       "BaseModule"
    ],
    "homepage" : "https://github.com/maros/Zway-Presence/",
