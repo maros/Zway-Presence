@@ -1,3 +1,9 @@
+1.08 2016 Jan 18, Mon
+    * Declare cron dependency
+    * Rename title/description key to make module work in appstore
+    * Handle timeouts via cron
+    * Update homepage and readme
+
 1.07 2015 Dec 29, Tue
     * Fix date calculation
 
