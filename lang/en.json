@@ -1,9 +1,9 @@
 {
-   "m_descr" : "This module lets you manage presence states. The mode is determined based on the state of three switches: present/away, on vacation/home, and day/night",
+   "m_descr" : "This module lets you manage presence states. The current presence mode is determined based on the state of three switches: present/away, on vacation, and day/night. This module emits \nCheck https://github.com/maros/Zway-Presence//blob/master/README.md for detailed documentation.",
+   "m_title" : "Presence state",
    "night_end_label" : "Night end",
    "night_start_label" : "Night start",
    "time_format" : "hh:mm",
-   "m_title" : "Presence state",
    "title_night" : "Night",
    "title_presence" : "Presence",
    "title_vacation" : "Vacation"
