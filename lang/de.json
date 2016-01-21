@@ -1,5 +1,5 @@
 {
-   "m_descr" : "Dieses Modul verwaltet Anwesenheits Zusände. Der Modus ergibt sich aus der Komination von drei Schaltern: Anwesend/Abwesend, Urlaub, und Tag/Nacht.\nSiehe https://github.com/maros/Zway-Presence//blob/master/README.md für detailliertere Dokumentation.",
+   "m_descr" : "Dieses Modul verwaltet Anwesenheits Zusände. Der Modus ergibt sich aus der Komination von drei Schaltern: Anwesend/Abwesend, Urlaub, und Tag/Nacht.<br>Siehe  <a href=\"https://github.com/maros/Zway-Presence/blob/master/README.md\">github.com/maros/Zway-Presence</a> für detailliertere Dokumentation.",
    "m_title" : "Anwesenheit",
    "night_end_label" : "Nacht Ende",
    "night_start_label" : "Nacht Anfang",
