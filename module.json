@@ -27,7 +27,8 @@
             "maskString" : "99:99",
             "order" : 1,
             "placeholder" : "__time_format__",
-            "type" : "time"
+            "type" : "time",
+            "helper": "__night_time_helper__"
          }
       }
    },
