@@ -40,14 +40,17 @@ Presence.prototype.init = function (config) {
     self.nightDev       = self.createDevice('night','off');
     
     _.each(['nightStart','nightEnd'],function(timeString) {
-        var date        = self.parseTime(self.config[timeString]);
-        self.controller.emit("cron.addTask","Presence."+timeString, {
-            minute:     date.getMinutes(),
-            hour:       date.getHours(),
-            weekDay:    null,
-            day:        null,
-            month:      null
-        });
+        if (typeof(self.config[timeString]) !== 'undefined'
+            && self.config[timeString] !== '') {
+            var date        = self.parseTime(self.config[timeString]);
+            self.controller.emit("cron.addTask","Presence."+timeString, {
+                minute:     date.getMinutes(),
+                hour:       date.getHours(),
+                weekDay:    null,
+                day:        null,
+                month:      null
+            });
+        }
     });
     
     controller.on('Presence.nightStart',function() {
