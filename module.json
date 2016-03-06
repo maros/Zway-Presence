@@ -23,12 +23,12 @@
             "type" : "time"
          },
          "nightStart" : {
+            "helper" : "__night_time_helper__",
             "label" : "__night_start_label__",
             "maskString" : "99:99",
             "order" : 1,
             "placeholder" : "__time_format__",
-            "type" : "time",
-            "helper": "__night_time_helper__"
+            "type" : "time"
          }
       }
    },
@@ -51,5 +51,5 @@
       "type" : "object"
    },
    "singleton" : true,
-   "version" : 1.08
+   "version" : 1.09
 }

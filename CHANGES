@@ -1,3 +1,10 @@
+1.09 2016 Mar 06, Sun
+    * Time not required anymore
+    * Add time helper
+    * Do not switch day/night if no time is configured
+    * Update installation howto
+    * Add doc link
+
 1.08 2016 Jan 18, Mon
     * Declare cron dependency
     * Rename title/description key to make module work in appstore
