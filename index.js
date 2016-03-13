@@ -129,7 +129,7 @@ Presence.prototype.createDevice = function(type,defaultLevel) {
     });
     
     var level = deviceObject.get('metrics:level');
-    deviceObject.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+level+'.png');
+    deviceObject.set('metrics:icon',self.imagePath+'/'+type+'_'+level+'.png');
     
     return deviceObject;
 };
@@ -161,7 +161,7 @@ Presence.prototype.switchMode = function(type,newLevel) {
     
     self.log('Switching '+newLevel+' '+type);
     deviceObject.set('metrics:level',newLevel);
-    deviceObject.set('metrics:icon','/ZAutomation/api/v1/load/modulemedia/Presence/'+type+'_'+newLevel+'.png');
+    deviceObject.set('metrics:icon',self.imagePath+'/'+type+'_'+newLevel+'.png');
     
     self.calcMode(type);
     self.controller.emit("presence.switch"+type,newLevel);
