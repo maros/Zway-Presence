@@ -20,7 +20,8 @@
             "maskString" : "99:99",
             "order" : 2,
             "placeholder" : "__time_format__",
-            "type" : "time"
+            "type" : "time",
+            "dateFormat": "HH:mm"
          },
          "nightStart" : {
             "helper" : "__night_time_helper__",
@@ -28,7 +29,8 @@
             "maskString" : "99:99",
             "order" : 1,
             "placeholder" : "__time_format__",
-            "type" : "time"
+            "type" : "time",
+            "dateFormat": "HH:mm"
          }
       }
    },
@@ -39,12 +41,12 @@
    "schema" : {
       "properties" : {
          "nightEnd" : {
-            "pattern" : "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
-            "type" : "string"
+            "type" : "string",
+            "format": "time"
          },
          "nightStart" : {
-            "pattern" : "^(([01]?[0-9]|(2[0-3])):([0-5][0-9])$",
-            "type" : "string"
+            "type" : "string",
+            "format": "time"
          }
       },
       "required" : true,
