@@ -43,6 +43,7 @@ Presence.prototype.init = function (config) {
         if (typeof(self.config[timeString]) !== 'undefined'
             && self.config[timeString] !== '') {
             var date        = self.parseTime(self.config[timeString]);
+            self.log('Switch '+timeString+' at '+date.getHours()+':'+date.getMinutes());
             self.controller.emit("cron.addTask","Presence."+timeString, {
                 minute:     date.getMinutes(),
                 hour:       date.getHours(),
