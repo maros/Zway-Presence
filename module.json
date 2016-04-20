@@ -16,21 +16,21 @@
    "options" : {
       "fields" : {
          "nightEnd" : {
+            "dateFormat" : "HH:mm",
             "label" : "__night_end_label__",
             "maskString" : "99:99",
             "order" : 2,
             "placeholder" : "__time_format__",
-            "type" : "time",
-            "dateFormat": "HH:mm"
+            "type" : "time"
          },
          "nightStart" : {
+            "dateFormat" : "HH:mm",
             "helper" : "__night_time_helper__",
             "label" : "__night_start_label__",
             "maskString" : "99:99",
             "order" : 1,
             "placeholder" : "__time_format__",
-            "type" : "time",
-            "dateFormat": "HH:mm"
+            "type" : "time"
          }
       }
    },
@@ -41,17 +41,17 @@
    "schema" : {
       "properties" : {
          "nightEnd" : {
-            "type" : "string",
-            "format": "time"
+            "format" : "time",
+            "type" : "string"
          },
          "nightStart" : {
-            "type" : "string",
-            "format": "time"
+            "format" : "time",
+            "type" : "string"
          }
       },
       "required" : true,
       "type" : "object"
    },
    "singleton" : true,
-   "version" : 1.09
+   "version" : 1.1
 }

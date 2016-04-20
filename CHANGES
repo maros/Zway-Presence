@@ -1,3 +1,9 @@
+1.1 2016 Apr 20, Wed
+    * Log day/night times
+    * Fix time fields in module.json
+    * Set probeType
+    * Use imagePath from BaseModule
+
 1.09 2016 Mar 06, Sun
     * Time not required anymore
     * Add time helper
