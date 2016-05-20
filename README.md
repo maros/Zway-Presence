@@ -7,7 +7,8 @@ This module manages presence modes. Four different presence modes are available
 * away (Away - both day and night) 
 * vacation (Prolonged absence - both day and night)
 
-This information can then be used by other modules to create smart automation 
+This information can then be used by other modules (eg. ConditionSwitch, 
+EventWatcher, ThermostatControl, ...) to create smart automation 
 rules (eg. thermostat operation modes based on presence status) Whenever 
 presence modes are switched an event will be emitted. Day/Night can be switched
 either manually, or by configuring a time by which the switch should happen 
@@ -31,6 +32,9 @@ Whenever presence mode change an event will be triggered
 * presence.night
 * presence.comehome (when switching from away or vacation to home or night)
 * presence.leave (when switching from home or night to away or vacation)
+
+[EventWatcher](https://github.com/maros/Zway-EventWatcher) can be
+used to catch and act upon these events.
 
 # Virtual Devices
 
