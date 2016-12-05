@@ -4,14 +4,14 @@ This module manages presence modes. Four different presence modes are available
 
 * home (Home during daytime)
 * night (Home during nighttime)
-* away (Away - both day and night) 
+* away (Away - both day and night)
 * vacation (Prolonged absence - both day and night)
 
-This information can then be used by other modules (eg. ConditionSwitch, 
-EventWatcher, ThermostatControl, ...) to create smart automation 
-rules (eg. thermostat operation modes based on presence status) Whenever 
+This information can then be used by other modules (eg. ConditionSwitch,
+EventWatcher, ThermostatControl, ...) to create smart automation
+rules (eg. thermostat operation modes based on presence status) Whenever
 presence modes are switched an event will be emitted. Day/Night can be switched
-either manually, or by configuring a time by which the switch should happen 
+either manually, or by configuring a time by which the switch should happen
 automatically.
 
 # Configuration
@@ -19,7 +19,7 @@ automatically.
 ## night_start, night_end
 
 Lets you specify a time by which night mode should be activated/deactivated.
-automatically. Manual switching regardless of the configured time is still 
+automatically. Manual switching regardless of the configured time is still
 possible.
 
 # Events
@@ -44,7 +44,7 @@ This module creates three virtual device switches to manage modes:
 * Vacation: Longer absence
 * Day/night
 
-Additionally the calculated presence mode is stored in each device under 
+Additionally the calculated presence mode is stored in each device under
 metrics:mode.
 
 # Installation
@@ -52,11 +52,11 @@ metrics:mode.
 Install the BaseModule from https://github.com/maros/Zway-BaseModule first
 
 The prefered way of installing this module is via the "Zwave.me App Store"
-available in 2.2.0 and higher. For stable module releases no access token is 
-required. If you want to test the latest pre-releases use 'k1_beta' as 
+available in 2.2.0 and higher. For stable module releases no access token is
+required. If you want to test the latest pre-releases use 'k1_beta' as
 app store access token.
 
-For developers and users of older Zway versions installation via git is 
+For developers and users of older Zway versions installation via git is
 recommended.
 
 ```shell
@@ -80,7 +80,7 @@ git checkout -b master --track origin/master
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or any 
+the Free Software Foundation, either version 3 of the License, or any
 later version.
 
 This program is distributed in the hope that it will be useful,
