@@ -1,7 +1,7 @@
 /*** Presence Z-Way HA module *******************************************
 
-Version: 1.1
-(c) Maroš Kollár, 2015
+Version: 1.10
+(c) Maroš Kollár, 2015-2017
 -----------------------------------------------------------------------------
 Author: Maroš Kollár <maros@k-1.com>
 Description:
