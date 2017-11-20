@@ -3,10 +3,9 @@
    "m_title" : "Anwesenheit",
    "night_end_label" : "Nacht Ende",
    "night_start_label" : "Nacht Anfang",
+   "night_time_helper" : "Uhrzeit für Nacht Anfang und Ende. Wenn keien Uhrzeit konfiguriert ist passiert kein automatisches Umschalten zwischen Tag/Nacht.",
    "time_format" : "hh:mm",
    "title_night" : "Nacht Anwesend",
    "title_presence" : "Anwesend",
-   "title_vacation" : "Urlaub",
-   "night_time_helper": "Uhrzeit für Nacht Anfang und Ende. Wenn keien Uhrzeit konfiguriert ist passiert kein automatisches Umschalten zwischen Tag/Nacht."
-
+   "title_vacation" : "Urlaub"
 }

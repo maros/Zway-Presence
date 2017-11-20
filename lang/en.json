@@ -3,9 +3,9 @@
    "m_title" : "Presence",
    "night_end_label" : "Night end",
    "night_start_label" : "Night start",
+   "night_time_helper" : "Time when night mode should be activated/deactivated. If no time is set switching will not occur automatically.",
    "time_format" : "hh:mm",
    "title_night" : "Night",
    "title_presence" : "Presence",
-   "title_vacation" : "Vacation",
-   "night_time_helper": "Time when night mode should be activated/deactivated. If no time is set switching will not occur automatically."
+   "title_vacation" : "Vacation"
 }
